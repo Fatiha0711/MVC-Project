@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Project.Models.Sharee>
+@using PagedList
+@using PagedList.Mvc
+
+
+<table class="table table-bordered table-striped table-sm mt-2">
+    <thead class="table-primary">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Sharee</th>
+            <th>First Introduced</th>
+            <th>On Sale?</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td style="width:40px;text-align:center;">
+                    <button type="button" class="btn btn-sm show"><i class="bi bi-chevron-right"></i></button>
+                    <button type="button" class="btn btn-sm hide" style="display:none;"><i class="bi bi-chevron-up"></i></button>
+                </td>
+                <td style="width:45px;text-align:center">
+                    <img src="~/Images/@s.Picture" class="rounded-circle" style="width:32px;" />
+                </td>
+                <td>@s.Brand.BrandName</td>
+                <td>@s.Model.ModelName</td>
+                <td>@s.ShareeName</td>
+                <td>@s.FirstIntroduceOn.ToString("yyyy-MM-dd")</td>
+                <td>@(s.OnSale?"Yes":"No")</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Sharees", new { id = s.ShareeId }, new { @class = "btn btn-outline-success btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", "Sharees", new { id = s.ShareeId }, new { @class = "btn btn-outline-danger btn-sm" })
+                </td>
+            </tr>
+            <tr style="display:none;">
+                <td></td>
+                <td colspan="6">
+                    <h4>Stocks</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var t in s.Stocks)
+                            {
+                                <tr>
+                                    <td>@t.Category</td>
+                                    <td>@t.Price</td>
+                                    <td>@t.Quantity</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2 class="display-4">Welcome to Sharee Archives</h2>
+<br />
+<br />
+<h2 class="display-6">Aggregiate calculation on Vendor & Invoice table</h2>
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Count</th>
+            <th>Min Invoice Total</th>
+            <th>Max Invoice Total</th>
+            <th>Avg Invoice Total</th>
+            <th>Sum of Invoice total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@ViewBag.NumberOfVendors</td>
+            <td>@ViewBag.InvoiceMin</td>
+            <td>@ViewBag.InvoiceMax</td>
+            <td>@ViewBag.InvoiceAvg</td>
+            <td>@ViewBag.InvoiceSum</td>
+        </tr>
+    </tbody>
+</table>
+<style>
+    body {
+        background-image: url("Images/1.jpg");
+        font-family: 'Century Gothic';
+        color: white;
+    }
+</style>
+
+@section styles{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}

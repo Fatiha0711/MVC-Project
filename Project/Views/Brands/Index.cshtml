@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Project.Models.Brand>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="display-4">Brand List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var s in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => s.BrandName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Brands", new { id = s.BrandId }, new { @class = "btn btn-outline-success btn-sm" })
+            @Html.ActionLink("Delete", "Delete", "Brands", new { id = s.BrandId }, new { @class = "btn btn-outline-danger btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    <a href="@Url.Action("Index","Home")" class="btn btn-link btn-sm"><i class="fa fa-arrow-circle-left"></i> Back to list</a>
+</div>

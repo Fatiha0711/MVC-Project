@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Project.Models.Model>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Model</h2>
+
+<style>
+    body {
+        background-image: url("Images/6.jpg");
+        font-family: 'Century Gothic';
+        color: white;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ModelId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ModelId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section styles{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}
